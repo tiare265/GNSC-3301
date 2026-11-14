@@ -1,1 +1,118 @@
 
+---
+title: "Analyzing the Relationship Between Car Weight and Fuel Efficiency"
+author: "Tiare Hermosilla"
+date: "November 13, 2026"
+format: html
+---
+
+# 1. Project Overview
+
+This project investigates the relationship between vehicle weight and fuel efficiency. The main research question is whether heavier vehicles tend to have lower fuel efficiency compared to lighter vehicles.
+
+The analysis will use the built-in `mtcars` dataset in R, which contains information about 32 different automobiles.
+
+# 2. Project Goals
+
+The main goals of this project are:
+
+- Explore the relationship between vehicle weight and fuel efficiency.
+- Organize and summarize vehicle data using R.
+- Create visualizations to identify possible patterns.
+- Calculate the correlation between vehicle weight and miles per gallon (MPG).
+- Interpret the results and determine whether vehicle weight is associated with fuel consumption.
+
+# 3. Resources Consulted
+
+The following resources will support the project:
+
+1. [ComputingII GitHub Repository](https://github.com/nmalmberg/ComputingII) – Course materials and examples related to computing and data analysis.
+2. [R Documentation](https://www.r-project.org/) – Information about the R programming language.
+3. [R mtcars Dataset Documentation](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) – Information about the automobile dataset.
+4. [R Statistical Functions](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/cor.html) – Documentation for calculating correlations.
+
+# 4. Initial Progress and Data Exploration
+
+The initial stage of the project focuses on loading the dataset, examining its structure, and identifying the variables needed for the analysis.
+
+```{r}
+# Load the built-in automobile dataset
+data(mtcars)
+
+# Display the first six observations
+head(mtcars)
+
+# Examine the structure of the dataset
+str(mtcars)
+```
+
+The variables of interest are:
+
+- `wt`: Vehicle weight (measured in 1,000 pounds).
+- `mpg`: Fuel efficiency (miles per gallon).
+
+## 4.1 Descriptive Statistics
+
+The following code calculates basic descriptive statistics for vehicle weight and fuel efficiency.
+
+```{r}
+# Summary statistics for selected variables
+summary(mtcars[, c("wt", "mpg")])
+```
+
+## 4.2 Data Visualization
+
+A scatterplot will be used to explore the relationship between vehicle weight and fuel efficiency.
+
+```{r}
+# Create a scatterplot
+plot(mtcars$wt, mtcars$mpg,
+     main = "Vehicle Weight vs. Fuel Efficiency",
+     xlab = "Vehicle Weight (1,000 lbs)",
+     ylab = "Miles Per Gallon (MPG)",
+     pch = 19)
+
+# Add a trend line
+abline(lm(mpg ~ wt, data = mtcars))
+```
+
+## 4.3 Correlation Analysis
+
+The Pearson correlation coefficient will be calculated to measure the strength and direction of the relationship between vehicle weight and fuel efficiency.
+
+```{r}
+# Calculate Pearson correlation
+cor(mtcars$wt, mtcars$mpg)
+
+# Perform a correlation test
+cor.test(mtcars$wt, mtcars$mpg)
+```
+
+# 5. Preliminary Expectations
+
+Based on the research question, heavier vehicles are expected to have lower miles per gallon. The scatterplot and correlation analysis will help evaluate this expectation.
+
+The initial analysis will provide a foundation for further investigation and interpretation.
+
+# 6. Next Steps
+
+Future work will include:
+
+- Interpreting the statistical results.
+- Examining possible outliers and unusual observations.
+- Exploring additional variables that may influence fuel efficiency.
+- Improving the visualizations.
+- Preparing a final summary of the findings.
+
+# 7. Initial Findings
+
+The `mtcars` dataset contains 32 automobile observations. Initial examination of the data shows a negative relationship between vehicle weight and fuel efficiency.
+
+The Pearson correlation between weight and miles per gallon is approximately -0.868. This indicates a strong negative association: heavier vehicles generally have lower fuel efficiency.
+
+The initial findings support the project's research question and provide a foundation for further statistical analysis.
+
+# 8. Conclusion of Progress Report
+
+The project has established its research question, identified a suitable dataset, and developed initial R code for descriptive statistics, visualization, and correlation analysis. The next stage will focus on executing the analysis and interpreting the results in greater detail.
+
